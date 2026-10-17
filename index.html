@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ibra Al Tabian</title>
+<style>
+:root{
+  --bg:#fbfbfd; --card:#f5f5f7; --text:#1d1d1f; --muted:#6e6e73; --accent:#0071e3;
+  --glass:rgba(255,255,255,.28); --line:rgba(0,0,0,.08); --hi1:rgba(255,255,255,.95); --hi2:rgba(255,255,255,.5); --hi3:rgba(255,255,255,.35); --drop:rgba(0,0,0,.14);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#000;--card:#1c1c1e;--text:#f5f5f7;--muted:#a1a1a6;--accent:#2997ff;--glass:rgba(255,255,255,.08);--line:rgba(255,255,255,.12);--hi1:rgba(255,255,255,.45);--hi2:rgba(255,255,255,.18);--hi3:rgba(255,255,255,.08);--drop:rgba(0,0,0,.6)}
+}
+:root[data-theme="dark"]{--bg:#000;--card:#1c1c1e;--text:#f5f5f7;--muted:#a1a1a6;--accent:#2997ff;--glass:rgba(255,255,255,.08);--line:rgba(255,255,255,.12);--hi1:rgba(255,255,255,.45);--hi2:rgba(255,255,255,.18);--hi3:rgba(255,255,255,.08);--drop:rgba(0,0,0,.6)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px)}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Inter,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:inherit;text-decoration:none}
+.glass{background:var(--glass);-webkit-backdrop-filter:blur(14px) saturate(180%);backdrop-filter:blur(14px) saturate(180%);
+  box-shadow:inset 1.5px 1.5px 1px var(--hi1),inset -1px -1px 1px var(--hi2),inset 0 0 22px var(--hi3),0 10px 30px var(--drop)}
+html.rf .glass{box-shadow:inset 1px 1px 0 var(--hi1),inset -1px -1px 0 var(--hi2),0 10px 30px var(--drop)}
+
+nav{position:fixed;top:calc(env(safe-area-inset-top,0px) + 30px);left:50%;transform:translateX(-50%);z-index:10;
+  display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;padding:5px;border-radius:999px;touch-action:none;user-select:none;-webkit-user-select:none}
+nav a{padding:8px 16px;border-radius:999px;font-size:14px;font-weight:500;color:var(--muted);transition:.2s;text-align:center;-webkit-user-drag:none}
+nav a:hover{color:var(--text)}
+nav.glass{background:rgba(255,255,255,.6)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) nav.glass{background:rgba(40,40,44,.55)}}
+:root[data-theme="dark"] nav.glass{background:rgba(40,40,44,.55)}
+nav a[aria-selected=true]{color:var(--text)}
+
+.ind{position:fixed;left:0;top:0;z-index:11;pointer-events:none;border-radius:999px;background:var(--line);box-shadow:0 2px 8px var(--drop);transition:background .25s,box-shadow .25s;will-change:transform}
+.ind.press{background:rgba(255,255,255,.04);box-shadow:inset 1px 1px 0 var(--hi1),inset -1px -1px 0 var(--hi2),0 12px 28px var(--drop)}
+
+main{max-width:860px;margin:0 auto;padding:0 24px}
+section{display:none;padding:120px 0 70px;min-height:80svh}
+section.on{display:block;animation:tabin .35s ease}
+@keyframes tabin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero{position:relative;min-height:100svh;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.hero.on{display:flex}
+h1{font-size:clamp(52px,12vw,120px);line-height:1.03;letter-spacing:-.04em;margin:0 0 18px;font-weight:700}
+.sub{font-size:clamp(19px,2.6vw,26px);color:var(--muted);max-width:560px;margin:0 0 32px;line-height:1.35}
+.btn{display:inline-block;padding:12px 24px;border-radius:999px;font-size:16px;font-weight:500}
+.btn.p{background:var(--accent);color:#fff}
+h2{font-size:clamp(30px,5vw,44px);letter-spacing:-.03em;margin:0 0 18px;line-height:1.1}
+.txt{font-size:clamp(19px,2.4vw,23px);color:var(--muted);max-width:620px;margin:0}
+.txt b{color:var(--text);font-weight:600}
+
+.list{display:grid;gap:14px;margin-top:8px}
+.card{display:block;background:var(--card);border-radius:24px;padding:28px 30px;transition:transform .25s}
+.card:hover{transform:scale(1.01)}
+.card h3{margin:0 0 6px;font-size:22px;letter-spacing:-.02em}
+.card p{margin:0;color:var(--muted);font-size:16px}
+
+.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.contact{padding-bottom:50px}
+[hidden]{display:none!important}
+.about{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.me{position:relative;width:132px;height:132px;flex:none;border-radius:36%;overflow:hidden;display:grid;place-items:center;background:var(--card);box-shadow:0 10px 30px var(--drop)}
+.me img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card .meta{display:block;margin-top:10px;font-size:13px;color:var(--muted)}
+.back{display:inline-block;margin-bottom:18px;color:var(--accent);font-size:16px}
+.date{margin:0 0 22px;color:var(--muted);font-size:15px}
+.md{max-width:640px;font-size:18px;line-height:1.7}
+.md h3,.md h4,.md h5{letter-spacing:-.02em;margin:1.6em 0 .4em;line-height:1.2}
+.md p,.md ul,.md blockquote{margin:0 0 1em}
+.md a{color:var(--accent)}
+.md code{background:var(--line);padding:2px 6px;border-radius:6px;font-size:.9em}
+.md pre{background:var(--card);padding:16px 18px;border-radius:16px;overflow-x:auto;margin:0 0 1em}
+.md pre code{background:none;padding:0}
+.md blockquote{border-left:3px solid var(--line);padding-left:16px;color:var(--muted)}
+.posts{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:150px 1fr;gap:6px 28px;padding:28px 4px;border-bottom:1px solid var(--line);transition:padding .25s}
+.row:hover{padding-left:14px}
+.row time{font-size:14px;color:var(--muted);padding-top:7px}
+.row h3{margin:0 0 6px;font-size:clamp(22px,3vw,28px);letter-spacing:-.025em;line-height:1.2}
+.row p{margin:0;color:var(--muted);font-size:17px}
+#post{max-width:680px}
+#pt{font-size:clamp(34px,6vw,54px);letter-spacing:-.035em;line-height:1.06;margin:0 0 12px}
+.date{margin:0 0 34px;font-size:15px}
+.md{max-width:none;font-size:19px;line-height:1.75}
+.md>p:first-child{font-size:22px;line-height:1.55;color:var(--text)}
+.md h3{font-size:28px}.md h4{font-size:22px}
+.md ul{padding-left:1.3em}.md li{margin:.35em 0}
+.jr{margin-top:70px}
+.ch{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;margin:0 0 90px}
+.ch.solo{grid-template-columns:minmax(0,640px)}
+.ch:nth-child(even) .ph{order:-1}
+.js .ch{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.9,.3,1)}
+.js .ch.in{opacity:1;transform:none}
+.no{display:block;font-size:68px;font-weight:800;letter-spacing:-.05em;line-height:1;margin-bottom:6px;color:transparent;-webkit-text-stroke:2px var(--accent);opacity:.55}
+.ch h3{font-size:clamp(28px,4.6vw,40px);letter-spacing:-.035em;line-height:1.08;margin:0 0 16px}
+.ch p{margin:0 0 14px;font-size:clamp(17px,2.2vw,20px);line-height:1.65;color:var(--muted)}
+.ph{display:grid;gap:22px;justify-items:center}
+.pol{margin:0;width:100%;max-width:340px;background:#fff;padding:10px 10px 12px;border-radius:6px;box-shadow:0 14px 34px var(--drop);transform:rotate(var(--r,-3deg));transition:transform .45s cubic-bezier(.3,1.5,.5,1)}
+.pol:hover{transform:rotate(0) scale(1.04)}
+.pol img{width:100%;height:auto;display:block;border-radius:2px}
+.pol figcaption{color:#444;font:16px/1.3 "Bradley Hand","Segoe Print","Segoe Script","Comic Sans MS",cursive;padding:10px 4px 0;text-align:center}
+.pol figcaption a{color:#0a58c9}
+.ph.two .pol:last-child{max-width:260px}
+.ch p.big{margin:10px 0 0;font-size:clamp(36px,6.5vw,60px);font-weight:700;letter-spacing:-.045em;line-height:1.05;color:var(--text)}
+.me{transform:rotate(-4deg);transition:transform .45s cubic-bezier(.3,1.5,.5,1)}
+.me:hover{transform:rotate(3deg) scale(1.06)}
+@media (max-width:720px){.ch,.ch.solo{grid-template-columns:minmax(0,1fr);gap:28px;margin-bottom:70px}.ch:nth-child(even) .ph{order:0}}
+@media (prefers-reduced-motion:reduce){.js .ch{opacity:1;transform:none;transition:none}}
+.now{display:flex;flex-wrap:wrap;justify-content:center;gap:28px 64px;margin-top:64px}
+.now div{text-align:center}
+.now b{display:block;font-size:clamp(40px,7vw,64px);font-weight:700;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+.now small{display:block;margin-top:8px;font-size:14px;color:var(--muted)}
+@media (max-width:560px){.row{grid-template-columns:1fr}.row time{padding-top:0}}
+footer{color:var(--muted);font-size:13px;padding:0 0 50px;text-align:center}
+@media (max-width:560px){nav a{padding:8px 7px;font-size:12.5px}.me{width:104px;height:104px}}
+</style>
+</head>
+<body>
+<nav class="glass" role="tablist" aria-label="Navigasi">
+  <a href="#hero" role="tab">Beranda</a><a href="#tentang" role="tab">Tentang</a><a href="#proyek" role="tab">Proyek</a><a href="#blog" role="tab">Blog</a><a href="#kontak" role="tab">Kontak</a>
+</nav>
+<div class="ind" id="ind" aria-hidden="true"></div>
+
+<main id="top">
+  <section class="hero on" id="hero">
+    <h1>Ibra Al Tabian.</h1>
+    <p class="sub">Ngoding buat senang-senang. Dari Surakarta.</p>
+    <a class="btn p" href="#proyek">Lihat proyek</a>
+    <div class="now">
+      <div><b data-n="232">232</b><small>bintang di tiga proyek utama</small></div>
+      <div><b data-n="47">47</b><small>repositori di GitHub</small></div>
+      <div><b data-n="60">60</b><small>pengikut</small></div>
+    </div>
+  </section>
+
+  <section id="tentang">
+    <h2>Tentang.</h2>
+    <div class="about"><div class="me" id="me"><img src="https://github.com/ibratabian17.png" alt="Foto Ibra Al Tabian" width="132" height="132"></div>
+    <p class="txt">Aku suka membongkar software untuk paham cara kerjanya, lalu bikin alternatifnya. Sekarang maintainer <b>Halcyon</b> dan <b>PixelOS</b> untuk ROM Android, dan lagi belajar AI. Aku juga Core Team di <b>Metrolist KMP</b> (bagian Lyrics UI dan Service), kadang membantu bagian MV dan beberapa hal untuk Mac, dan ikut membantu di awal pengerjaan iOS.</p></div>
+    <div class="jr">
+      <article class="ch"><div class="tx"><span class="no">01</span><h3>Short time di Jogja</h3>
+        <p>Jogja itu sebenarnya kota yang menjaga nama wisatanya dengan baik. Namun kotanya macet, dan jalannya terlalu bercabang, itu pun tetap macet. Tapi ciri khasnya unik.</p></div>
+        <div class="ph"><figure class="pol" style="--r:3deg"><img src="img/jogja.webp" alt="Gedung putih bergaya kolonial di Yogyakarta, dengan sepeda motor dan orang-orang di depannya" width="900" height="1349" loading="lazy" decoding="async"><figcaption>Jogja</figcaption></figure></div></article>
+      <article class="ch solo"><div class="tx"><span class="no">02</span><h3>Kok bisa suka ngoding?</h3>
+        <p>Mungkin karena aku pengen hal yang bisa memanjakan mataku? Kayak awal aku pakai Apple Music, liriknya cantik banget. Tapi setelah kulihat di versi Windows kok cuma line sync? Dan di web word sync sih, tapi performanya jelek dan liriknya aneh.</p></div></article>
+      <article class="ch"><div class="tx"><span class="no">03</span><h3>Selain ngoding ya?</h3>
+        <p>Aku suka mengedit foto kalau gabut, atau paling tidak ngefotoin stuff yang unik. Salah satu karya yang paling ramai yang kubuat adalah poster Kathleen di Instagram, dia adik kelasku semasa SMP. Hehe, itu aku bikinnya gabut.</p>
+        <p>Aku juga suka fotografi, tapi ga terlalu jago karena ga punya kamera. Kadang pinjam. Pakai HP bisa, tapi biar ga oversharpen aku pakai AI.</p></div>
+        <div class="ph two"><figure class="pol" style="--r:-3deg"><img src="img/poster.webp" alt="Poster hitam putih seorang penyanyi dengan tampilan pemutar musik, buatan Ibra untuk Instagram" width="900" height="1125" loading="lazy" decoding="async"><figcaption>Poster untuk <a href="https://www.instagram.com/arkeychel/" target="_blank" rel="noopener">@arkeychel</a> · kolab di Instagram, Juli 2025</figcaption></figure><figure class="pol" style="--r:4deg"><img src="img/kamera.webp" alt="Seseorang memotret dengan kamera, wajahnya tertutup kamera" width="900" height="1349" loading="lazy" decoding="async"><figcaption>Anjay SONY ILCE-7M3 cantik juga</figcaption></figure></div></article>
+      <article class="ch"><div class="tx"><span class="no">04</span><h3>But, I wanted more.</h3>
+        <p>Di saat orang lain jago membuat kreativitas, dan dengan adanya AI, aku melihat satu hal yang jarang orang lain lihat, yaitu performa dan estetika. Banyak aplikasi dengan estetika cantik namun performa buruk, begitu pun sebaliknya.</p></div>
+        <div class="ph"><figure class="pol" style="--r:-3deg"><img src="img/kelas.webp" alt="Siluet murid di kelas yang diterangi matahari sore, papan tulis bertuliskan: setelah dewasa aku akan jadi apa?" width="900" height="1125" loading="lazy" decoding="async"><figcaption>setelah dewasa aku akan jadi apa?</figcaption></figure></div></article>
+      <article class="ch solo"><div class="tx"><span class="no">05</span><h3>In my spare time,</h3>
+        <p>Mungkin aku bisa keliling kota, dan lain-lain. Aku tipikal orang yang suka berkenalan dengan orang lain dan mau bersosialisasi. Aku sendiri punya beberapa julukan yang unik, “Yahanu Hengker” lah padahal gabisa hacking, paling parah “Bondet” padahal engga. Istilahnya YTTA yeu.</p>
+        <p style="margin-top:26px">But there’s some mahfudzot that make me still standing until here.</p>
+        <p class="big">man jadda wajada.</p></div></article>
+    </div>
+  </section>
+
+  <section id="proyek">
+    <h2>Proyek.</h2>
+    <div class="list">
+      <a class="card" href="https://github.com/ibratabian17/YouLyPlus" target="_blank" rel="noopener">
+        <h3>YouLyPlus</h3>
+        <p>Ekstensi yang menambahkan lirik per kata dan per suku kata ke YouTube Music dan Apple Music. Ringan, dan sekaligus memperbaiki lirik di Apple Music web.</p>
+        <span class="meta">JavaScript · 161 bintang · 13 fork · MIT</span>
+      </a>
+      <a class="card" href="https://github.com/ibratabian17/LyricsPlus" target="_blank" rel="noopener">
+        <h3>LyricsPlus</h3>
+        <p>Kode sumber API di balik YouLy+, ditulis dengan Go. Scraper dan penyedia lirik yang ringan dan berperforma tinggi.</p>
+        <span class="meta">Go · 41 bintang · 9 fork · Apache 2.0</span>
+      </a>
+      <a class="card" href="https://github.com/ibratabian17/OpenParty" target="_blank" rel="noopener">
+        <h3>OpenParty</h3>
+        <p>Server pengganti untuk Just Dance Unlimited. Sudah diarsipkan.</p>
+        <span class="meta">JavaScript · 30 bintang · 16 fork · Apache 2.0</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="blog">
+    <h2>Blog.</h2>
+    <div class="posts" id="posts"></div>
+    <article id="post" hidden>
+      <a class="back" href="#blog">← Semua tulisan</a>
+      <h2 id="pt"></h2><p class="date" id="pd"></p><div class="md" id="pb"></div>
+    </article>
+  </section>
+
+  <section id="kontak" class="contact">
+    <h2>Kontak.</h2>
+    <p class="txt">Punya ide? Hubungi aja.</p>
+    <div class="links">
+      <a class="btn p" href="mailto:ibratabian@gmail.com">Email</a>
+      <a class="btn glass" href="https://github.com/ibratabian17" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn glass" href="https://t.me/ibratabian17" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </section>
+  <footer>© 2026 Ibra Al Tabian</footer>
+</main>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs id="defs"></defs></svg>
+<script>
+
+const chromium=!!window.chrome;let n=0;
+function glass(el,bezelRatio,thickK,level,blur,specOp,satur,zoom,ca){
+  const w=Math.round(el.offsetWidth),h=Math.round(el.offsetHeight);if(!w||!h||el._b===w+'x'+h)return;el._b=w+'x'+h;
+  const rad=Math.min(w,h)/2,bez=Math.max(6,rad*bezelRatio),T=bez*thickK;
+
+  const f=x=>Math.pow(1-Math.pow(1-x,4),.25);
+
+  const N=127,mag=new Float32Array(N+1),eta=1/1.5;let mx=1e-6;
+  for(let i=0;i<=N;i++){
+    const x=i/N,x1=Math.max(0,x-.001),x2=Math.min(1,x+.001),
+      dh=T*(f(x2)-f(x1))/((x2-x1)*bez),nl=Math.hypot(dh,1),nx=dh/nl,ny=1/nl,
+      cosi=ny,cost=Math.sqrt(1-eta*eta*(1-cosi*cosi)),k=eta*cosi-cost,
+      tx=k*nx,tz=-eta+k*ny;
+    mag[i]=T*f(x)*Math.abs(tx/tz);mx=Math.max(mx,mag[i]);
+  }
+
+  const sm=t=>{t=Math.min(Math.max(t,0),1);return t*t*(3-2*t)};
+  const zt=d=>zoom?(rad-d)*(1-1/zoom)*sm(d/bez)/level:0;
+  const tot=d=>(d<bez?mag[Math.round(d/bez*N)]:0)+zt(d);
+  if(zoom){mx=1e-6;for(let d=0;d<=rad;d++)mx=Math.max(mx,Math.abs(tot(d)))}
+
+  const cm=document.createElement('canvas'),cs=document.createElement('canvas');
+  cm.width=cs.width=w;cm.height=cs.height=h;
+  const xm=cm.getContext('2d'),xs=cs.getContext('2d'),im=xm.createImageData(w,h),is=xs.createImageData(w,h),
+    dm=im.data,ds=is.data,lx=Math.cos(-Math.PI/3),ly=Math.sin(-Math.PI/3),sw=4;
+  for(let j=0;j<h;j++)for(let i=0;i<w;i++){
+    const px=i+.5-w/2,py=j+.5-h/2,qx=Math.abs(px)-(w/2-rad),qy=Math.abs(py)-(h/2-rad),
+      ox=Math.max(qx,0),oy=Math.max(qy,0),L=Math.hypot(ox,oy),
+      depth=-(L+Math.min(Math.max(qx,qy),0)-rad);let nx=0,ny=0;
+    if(L>0){nx=Math.sign(px)*ox/L;ny=Math.sign(py)*oy/L}else if(qx>qy)nx=Math.sign(px);else ny=Math.sign(py);
+    const k=(j*w+i)*4;let m=0,a=0;
+    if(depth>0)m=Math.max(-1,Math.min(1,tot(depth)/mx));
+    if(depth>0&&depth<sw)a=Math.abs(nx*lx+ny*ly)*Math.min(depth/.8,1)*(1-depth/sw);
+    dm[k]=128-nx*m*127;dm[k+1]=128-ny*m*127;dm[k+2]=128;dm[k+3]=255;
+    ds[k]=ds[k+1]=ds[k+2]=255;ds[k+3]=a*255*specOp;
+  }
+  xm.putImageData(im,0,0);xs.putImageData(is,0,0);
+  const id='lg'+(el._id=el._id||++n),old=document.getElementById(id);if(old)old.remove();
+
+  const dmap=(sfx,k,res)=>'<feDisplacementMap id="'+id+sfx+'" in="SourceGraphic" in2="m" scale="'+(mx*level*k)+'" xChannelSelector="R" yChannelSelector="G" result="'+res+'"/>';
+  const chan=(inn,v,res)=>'<feColorMatrix in="'+inn+'" type="matrix" values="'+v+'" result="'+res+'"/>';
+  const disp=ca?dmap('r',1+ca,'dr')+chan('dr','1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0','cr')+dmap('d',1,'dg')+chan('dg','0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0','cg')+dmap('b',1-ca,'db')+chan('db','0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0','cb')+'<feBlend in="cr" in2="cg" mode="screen" result="rg"/><feBlend in="rg" in2="cb" mode="screen" result="d"/>':dmap('d',1,'d');
+  const fe=(u,res)=>'<feImage href="'+u+'" x="0" y="0" width="'+w+'" height="'+h+'" preserveAspectRatio="none" result="'+res+'"/>';
+  document.getElementById('defs').insertAdjacentHTML('beforeend',
+   '<filter id="'+id+'" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%">'+fe(cm.toDataURL(),'m')+
+   disp+
+   '<feColorMatrix in="d" type="saturate" values="'+(satur||1.6)+'" result="s"/>'+fe(cs.toDataURL(),'sp')+
+   '<feBlend in="sp" in2="s" mode="normal"/></filter>');
+  el._sc=mx*level;el._ca=ca||0;const v='blur('+blur+'px) url(#'+id+')';
+  el._v=v;el.style.backdropFilter=v;el.style.webkitBackdropFilter=v;
+}
+function build(){if(!chromium)return;
+  document.documentElement.classList.add('rf');
+  const SP=matchMedia('(prefers-color-scheme:dark)').matches?.5:1;
+  glass(document.querySelector('nav'),.8,1.6,2.2,2,SP,2);
+  document.querySelectorAll('.btn.glass').forEach(b=>glass(b,.8,1.6,2.2,2,SP,2));
+  glass(document.getElementById('ind'),.9,1.8,2.4,.5,SP,2,0,.03);kApply();}
+addEventListener('load',build);matchMedia('(prefers-color-scheme:dark)').addEventListener('change',()=>{document.querySelectorAll('nav,.btn.glass,#ind').forEach(e=>{e._b=''});build()});let t;addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(build,200)});
+
+let POSTS=null;
+const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const fd=d=>{const x=new Date(d);return isNaN(x)?'':x.toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'})};
+function md(s){
+  const inl=t=>esc(t).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\*([^*]+)\*/g,'<i>$1</i>').replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+  const L=s.replace(/\r/g,'').split('\n'),o=[];let i=0,m;
+  while(i<L.length){const l=L[i];
+    if(/^```/.test(l)){const b=[];i++;while(i<L.length&&!/^```/.test(L[i]))b.push(L[i++]);i++;o.push('<pre><code>'+esc(b.join('\n'))+'</code></pre>');continue}
+    if(m=l.match(/^(#{1,3})\s+(.*)/)){const k=m[1].length+2;o.push('<h'+k+'>'+inl(m[2])+'</h'+k+'>');i++;continue}
+    if(/^[-*]\s+/.test(l)){const b=[];while(i<L.length&&/^[-*]\s+/.test(L[i]))b.push('<li>'+inl(L[i++].replace(/^[-*]\s+/,''))+'</li>');o.push('<ul>'+b.join('')+'</ul>');continue}
+    if(/^>/.test(l)){const b=[];while(i<L.length&&/^>/.test(L[i]))b.push(L[i++].replace(/^>\s?/,''));o.push('<blockquote>'+inl(b.join(' '))+'</blockquote>');continue}
+    if(!l.trim()){i++;continue}
+    const b=[];while(i<L.length&&L[i].trim()&&!/^(```|#{1,3}\s|[-*]\s|>)/.test(L[i]))b.push(L[i++]);o.push('<p>'+inl(b.join(' '))+'</p>')}
+  return o.join('')}
+async function getPosts(){if(POSTS)return POSTS;
+  try{const r=await fetch('posts/index.json');if(!r.ok)throw 0;POSTS=(await r.json()).filter(p=>/^[\w-]+$/.test(p.slug)).sort((a,b)=>new Date(b.date)-new Date(a.date))}catch(_){POSTS=[]}
+  return POSTS}
+async function blog(slug){
+  const list=document.getElementById('posts'),art=document.getElementById('post'),ps=await getPosts();
+  if(!slug||!/^[\w-]+$/.test(slug)){art.hidden=true;list.hidden=false;
+    list.innerHTML=ps.length?ps.map(p=>'<a class="row" href="#blog/'+p.slug+'"><time>'+fd(p.date)+'</time><div><h3>'+esc(p.title||p.slug)+'</h3><p>'+esc(p.summary||'')+'</p></div></a>').join(''):'<p class="txt">Belum ada tulisan.</p>';return}
+  list.hidden=true;art.hidden=false;
+  const p=ps.find(x=>x.slug===slug),pb=document.getElementById('pb');
+  document.getElementById('pt').textContent=p?p.title:'Tulisan tidak ditemukan';
+  document.getElementById('pd').textContent=p?fd(p.date):'';pb.textContent='Memuat…';
+  try{const r=await fetch('posts/'+slug+'.md');if(!r.ok)throw 0;pb.innerHTML=md(await r.text())}catch(_){pb.textContent='Tulisan tidak bisa dimuat.'}}
+
+const nav=document.querySelector('nav'),tabs=[...nav.querySelectorAll('a')],secs=[...document.querySelectorAll('main section')],ind=document.getElementById('ind');
+let curTab=tabs[0],X=0,Y=0,W=0,pressed=false,moved=false,dx0=0,off=0,kc=0,kt=0,PX=0,VX=0,PS=1,VS=0,J=0,VJ=0,inited=false,lt=0,lastT='';
+function draw(){const sx=1+J,sy=1-Math.min(Math.abs(VX)/5200,.06),
+  t='translate('+PX.toFixed(1)+'px,'+Y.toFixed(1)+'px) scale('+(PS*sx).toFixed(3)+','+(PS*sy).toFixed(3)+')';
+  if(t!==lastT){lastT=t;ind.style.transform=t}}
+function place(){const r=curTab.getBoundingClientRect();W=r.width;ind.style.width=W+'px';ind.style.height=r.height+'px';X=r.left;Y=r.top;if(!inited){PX=X;inited=true}draw()}
+function kApply(){const b='lg'+ind._id,ca=ind._ca||0;
+  [['d',1],['r',1+ca],['b',1-ca]].forEach(p=>{const e=document.getElementById(b+p[0]);if(e&&ind._sc)e.setAttribute('scale',ind._sc*kc*p[1])});
+  if(ind._v){const v=(pressed||kc>.02)?ind._v:'none';ind.style.backdropFilter=v;ind.style.webkitBackdropFilter=v}}
+(function kl(){if(Math.abs(kt-kc)>.002){kc+=(kt-kc)*.18;if(kt===0&&kc<.02)kc=0;kApply()}requestAnimationFrame(kl)})();
+
+(function sp(ts){const dt=Math.min((ts-(lt||ts))/1000,.032);lt=ts;
+  if(inited){const k=pressed?380:260,c=pressed?28:24,T=pressed?1.5:1;
+    VX+=((X-PX)*k-VX*c)*dt;PX+=VX*dt;VS+=((T-PS)*320-VS*22)*dt;PS+=VS*dt;
+    const Jt=Math.min(Math.abs(VX)/2200,.14);VJ+=((Jt-J)*300-VJ*15)*dt;J+=VJ*dt;J=Math.max(-.09,Math.min(.14,J));
+    if(Math.abs(X-PX)<.05&&Math.abs(VX)<.5){PX=X;VX=0}
+    if(Math.abs(T-PS)<.002&&Math.abs(VS)<.01){PS=T;VS=0}
+    draw()}
+  requestAnimationFrame(sp)})(0);
+function count(){document.querySelectorAll('.now b').forEach(b=>{const n=+b.dataset.n,t0=performance.now(),d=1300;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){b.textContent=n;return}
+  (function f(t){const p=Math.min((t-t0)/d,1);b.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)})}
+function show(raw){let [id,sub]=(raw||'').split('/');if(!secs.some(s=>s.id===id))id='hero';
+  secs.forEach(s=>s.classList.toggle('on',s.id===id));
+  curTab=tabs.find(a=>a.getAttribute('href')==='#'+id);
+  tabs.forEach(a=>a.setAttribute('aria-selected',a===curTab));
+  if(id==='blog')blog(sub);if(id==='hero')count();place();scrollTo(0,0);requestAnimationFrame(build)}
+function go(id){try{history.replaceState(null,'','#'+id)}catch(_){}show(id)}
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;e.preventDefault();go(a.getAttribute('href').slice(1))});
+tabs.forEach(a=>a.draggable=false);nav.addEventListener('dragstart',e=>e.preventDefault());
+nav.addEventListener('pointerdown',e=>{const a=e.target.closest('a');if(a)X=a.getBoundingClientRect().left;pressed=true;moved=false;dx0=e.clientX;off=e.clientX-X;ind.classList.add('press');kt=1;draw()});
+addEventListener('pointermove',e=>{if(!pressed)return;
+  if(Math.abs(e.clientX-dx0)>4&&!moved){moved=true;ind.classList.add('drag')}
+  if(moved){const lo=tabs[0].getBoundingClientRect().left,hi=tabs[tabs.length-1].getBoundingClientRect().right-W;X=Math.min(Math.max(e.clientX-off,lo),hi);draw()}});
+function release(){if(!pressed)return;pressed=false;ind.classList.remove('press','drag');kt=0;
+  if(moved){const c=X+W/2;let best=tabs[0],bd=1e9;
+    tabs.forEach(a=>{const r=a.getBoundingClientRect(),d=Math.abs(r.left+r.width/2-c);if(d<bd){bd=d;best=a}});
+    go(best.getAttribute('href').slice(1))}else place()}
+addEventListener('pointerup',release);addEventListener('pointercancel',release);
+addEventListener('load',()=>{place();build()});addEventListener('resize',place);
+show(location.hash.slice(1));
+
+document.documentElement.classList.add('js');
+(function(){const els=document.querySelectorAll('.ch');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  els.forEach(e=>io.observe(e))})();
+</script>
+</body>
+</html>
