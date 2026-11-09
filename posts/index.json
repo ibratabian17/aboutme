@@ -4,5 +4,11 @@
     "title": "Kok bisa suka ngoding?",
     "date": "2026-10-17",
     "summary": "Dari lirik Apple Music yang cantik sampai pengen bikin aplikasi yang cantik sekaligus ngebut."
+  },
+  {
+    "slug": "apple-music-ttml-architecture",
+    "title": "Apple Music TTML Architecture",
+    "date": "2026-11-09",
+    "summary": "This is a deep dive into the architecture of Android Apple Music's TTML (Timed Text Markup Language) implementation, exploring how it handles subtitles and captions for a seamless user experience."
   }
 ]
